@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080d19">
+  <meta name="description" content="NeuroSeed AI: interact with a genuine PyTorch neural network trained on the Iris dataset. Adjust its four inputs, trace the weighted sums, and explore all 27 neurons.">
+  <title>NeuroSeed AI — Neural Network Laboratory</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="page">
+    <header class="topbar">
+      <a href="#top" class="brand" aria-label="NeuroSeed home"><span class="brand-icon">✳</span><span>Neuro<span class="brand-accent">Seed</span><small>AI LAB</small></span></a>
+      <nav aria-label="Main navigation">
+        <a href="#experiment">Experiment</a>
+        <a href="#network">Explore network</a>
+        <a href="#explain">Under the hood</a>
+      </nav>
+      <a class="top-github" href="https://github.com/saaeiddev/NeuroSeed-Iris-AI" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="status-dot"></span> FULLY LOCAL INFERENCE <span class="dash">/</span> NO API REQUIRED</div>
+          <h1>Inside the <span class="gradient-text">mind of a</span><br><span class="gradient-text">neural network.</span></h1>
+          <p>A real, trained AI model. Four measurements in. Three flower species out. Change the inputs, inspect the learned weights, and watch the mathematics come alive.</p>
+          <div class="hero-links"><a class="button button-primary" href="#experiment">Start experimenting <span>↗</span></a><a class="quiet-link" href="#explain">How it works <span>↓</span></a></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+          <div class="neuron-center"><div class="neuron-core"></div><span class="spark spark-a"></span><span class="spark spark-b"></span><span class="spark spark-c"></span></div>
+          <div class="orbit-label label-a">INPUT · 04</div><div class="orbit-label label-b">HIDDEN · 20</div><div class="orbit-label label-c">OUTPUT · 03</div>
+        </div>
+      </section>
+      <div class="stats"><div><span class="stat-value">27</span><span class="stat-label">Artificial neurons</span></div><div><span class="stat-value">191</span><span class="stat-label">Learned parameters</span></div><div><span class="stat-value">2</span><span class="stat-label">Hidden layers</span></div><div><span class="stat-value">93.3%</span><span class="stat-label">Held-out test accuracy · 28/30</span></div></div>
+      <section id="experiment" class="experiment-section">
+        <div class="section-heading"><div><span class="overline">01 / EXPERIMENT</span><h2>Give the network something to think about.</h2></div><p>Measurements in centimeters. The four features come from the Iris flower dataset.</p></div>
+        <div class="experiment-grid">
+          <article class="panel inputs-panel">
+            <div class="panel-title"><span class="panel-icon">↳</span><div><h3>Input features</h3><p>Move the sliders or type exact values.</p></div><span class="panel-meta">4 × x</span></div>
+            <div class="input-group" data-feature="0"><div class="input-label"><label for="number-0">Sepal length</label><div><input id="number-0" type="number" inputmode="decimal" min="4.3" max="7.9" step="0.1" value="5.1" aria-label="Sepal length centimeters"><span>cm</span></div></div><input id="range-0" type="range" min="4.3" max="7.9" step="0.1" value="5.1" aria-label="Sepal length slider"><div class="limits"><span>4.3</span><span>7.9</span></div></div>
+            <div class="input-group" data-feature="1"><div class="input-label"><label for="number-1">Sepal width</label><div><input id="number-1" type="number" inputmode="decimal" min="2" max="4.4" step="0.1" value="3.5" aria-label="Sepal width centimeters"><span>cm</span></div></div><input id="range-1" type="range" min="2" max="4.4" step="0.1" value="3.5" aria-label="Sepal width slider"><div class="limits"><span>2.0</span><span>4.4</span></div></div>
+            <div class="input-group" data-feature="2"><div class="input-label"><label for="number-2">Petal length</label><div><input id="number-2" type="number" inputmode="decimal" min="1" max="6.9" step="0.1" value="1.4" aria-label="Petal length centimeters"><span>cm</span></div></div><input id="range-2" type="range" min="1" max="6.9" step="0.1" value="1.4" aria-label="Petal length slider"><div class="limits"><span>1.0</span><span>6.9</span></div></div>
+            <div class="input-group" data-feature="3"><div class="input-label"><label for="number-3">Petal width</label><div><input id="number-3" type="number" inputmode="decimal" min="0.1" max="2.5" step="0.1" value="0.2" aria-label="Petal width centimeters"><span>cm</span></div></div><input id="range-3" type="range" min="0.1" max="2.5" step="0.1" value="0.2" aria-label="Petal width slider"><div class="limits"><span>0.1</span><span>2.5</span></div></div>
+            <div class="presets"><span class="micro-label">QUICK EXAMPLES</span><div class="preset-buttons"><button type="button" data-preset="0" class="preset active">Setosa</button><button type="button" data-preset="1" class="preset">Versicolor</button><button type="button" data-preset="2" class="preset">Virginica</button></div></div>
+            <button type="button" class="button button-primary run-button" id="run">Run inference <span aria-hidden="true">→</span></button>
+            <p class="hint">The prediction is computed in your browser using the trained model's actual weights.</p>
+          </article>
+          <article class="panel prediction-panel" aria-live="polite">
+            <div class="panel-title"><span class="panel-icon accent">◈</span><div><h3>Model prediction</h3><p>Softmax probability distribution</p></div><span class="live-pill"><span></span> LIVE</span></div>
+            <div class="prediction-spotlight"><div class="flower-glyph">✿</div><div class="spotlight-copy"><span class="micro-label">PREDICTED SPECIES</span><h3 id="winner">Iris setosa</h3><p id="winner-text">The network chose its highest scoring output.</p></div><div class="confidence-ring" id="confidence-ring"><div><strong id="confidence">—</strong><small>MODEL SCORE</small></div></div></div>
+            <div class="prob-heading"><span>CLASS PROBABILITIES</span><span>0—100%</span></div>
+            <div class="probabilities"><div class="prob-row"><div><span class="class-dot dot-0"></span>Setosa <strong id="score-0">—</strong></div><div class="track"><div class="fill fill-0" id="bar-0"></div></div></div><div class="prob-row"><div><span class="class-dot dot-1"></span>Versicolor <strong id="score-1">—</strong></div><div class="track"><div class="fill fill-1" id="bar-1"></div></div></div><div class="prob-row"><div><span class="class-dot dot-2"></span>Virginica <strong id="score-2">—</strong></div><div class="track"><div class="fill fill-2" id="bar-2"></div></div></div></div>
+            <div class="inference-strip"><span class="tiny-led"></span><span id="compute-status">Model ready for inference</span><span>CPU · JavaScript</span></div>
+          </article>
+        </div>
+      </section>
+      <section id="network" class="network-section">
+        <div class="section-heading"><div><span class="overline">02 / NETWORK VISUALIZATION</span><h2>Every connection has a weight.</h2></div><p>27 neurons arranged in four layers. Select any neuron in the first hidden layer to inspect its calculation.</p></div>
+        <div class="panel network-panel">
+          <div class="network-toolbar"><div class="diagram-legend"><span><i class="legend-input"></i> Input</span><span><i class="legend-hidden"></i> Hidden</span><span><i class="legend-output"></i> Output</span></div><div class="network-annotation">Lines = weighted connections <span aria-hidden="true">↗</span></div></div>
+          <div class="network-scroller"><svg id="network-svg" viewBox="0 0 920 500" role="img" aria-label="Neural network architecture with four inputs, hidden layers of twelve and eight neurons, and three outputs. Click a first-layer neuron to inspect its computation."><title>Interactive neural network — 4 → 12 → 8 → 3</title></svg></div>
+          <div class="layer-foot"><span>INPUT LAYER <b>04</b></span><span>HIDDEN LAYER 01 <b>12</b></span><span>HIDDEN LAYER 02 <b>08</b></span><span>OUTPUT LAYER <b>03</b></span></div>
+        </div>
+      </section>
+      <section id="explain" class="explain-section">
+        <div class="section-heading"><div><span class="overline">03 / UNDER THE HOOD</span><h2>Not magic. Actual mathematics.</h2></div><p>Here is how the selected artificial neuron transforms four normalized inputs into an activation.</p></div>
+        <div class="explain-grid">
+          <article class="panel math-panel">
+            <div class="panel-title"><span class="panel-icon">∑</span><div><h3>Neuron inspector</h3><p>Click a first-layer neuron above to change this.</p></div><span class="panel-meta" id="selected-neuron">H1 · 01</span></div>
+            <div class="formula">z = Σ(xᵢ · wᵢ) + b</div>
+            <div class="math-terms" id="math-terms"></div>
+            <div class="math-result"><div><span>WEIGHTED SUM + BIAS</span><strong id="z-value">—</strong></div><div><span>RELU ACTIVATION</span><strong id="activation-value">—</strong></div></div>
+            <p class="hint">Inputs are standardized with training-set statistics before reaching the first layer. ReLU(z) = max(0, z).</p>
+          </article>
+          <article class="panel learn-panel">
+            <div class="panel-title"><span class="panel-icon accent">✧</span><div><h3>What's really happening?</h3><p>From data to decision</p></div></div>
+            <div class="steps"><div><span>01</span><div><h4>Normalize</h4><p>Measurements are standardized with stored training means and standard deviations.</p></div></div><div><span>02</span><div><h4>Multiply &amp; add</h4><p>Each layer computes weighted inputs and biases with matrix operations.</p></div></div><div><span>03</span><div><h4>Activate</h4><p>Two hidden layers apply ReLU to transform their outputs.</p></div></div><div><span>04</span><div><h4>Predict</h4><p>Three output logits are converted to class probabilities using softmax.</p></div></div></div>
+            <div class="learn-note"><strong>Real PyTorch weights</strong><span>Extracted directly from a model trained from scratch on the classic Iris dataset. No network request, backend, or simulated answers.</span></div>
+          </article>
+        </div>
+      </section>
+      <footer><span>✳ NeuroSeed AI</span><span>Created by Amir Saeid Dehghan · 2026</span><a href="https://github.com/saaeiddev/projects/tree/main/NeuroSeed-Iris-AI" target="_blank" rel="noopener">Python source ↗</a><small>Educational classification demo · Iris dataset · Not a general image classifier</small></footer>
+    </main>
+  </div>
+</body>
+</html>
