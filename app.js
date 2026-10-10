@@ -90,7 +90,7 @@ function renderPrediction(data) {
   $("winner").textContent = CLASS_NAMES[best];
   $("winner-text").textContent = "Highest output score across the three flower classes.";
   $("confidence").textContent = confidence.toFixed(1) + "%";
-  $("confidence-ring").style.background = "conic-gradient(#7be8f6 " + confidence + "%, #283c55 " + confidence + "%)";
+  $("confidence-ring").style.background = "conic-gradient(#d8ff54 " + confidence + "%, #9c86ef " + confidence + "%)";
   data.probs.forEach(function(p, i) {
     $("score-" + i).textContent = (p * 100).toFixed(2) + "%";
     $("bar-" + i).style.width = (p * 100) + "%";
@@ -149,10 +149,10 @@ function renderNetwork(data) {
   svg.appendChild(title);
   const pos=neuronPositions();
   const activations=[data.standardized,data.hidden1.a,data.hidden2.a,data.probs];
-  const colors=["#78e6f7","#a998ff","#a998ff","#ffc992"];
+  const colors=["#ff6549","#6240f6","#a956fa","#20c9ad"];
   const labels=["INPUTS","HIDDEN 01","HIDDEN 02","OUTPUTS"];
   labels.forEach(function(label,i) {
-    const text=svgElement("text",{x:pos[i][0].x,y:"27","text-anchor":"middle",fill:"#8ea5c6","font-size":"11","font-weight":"700","letter-spacing":"2"});
+    const text=svgElement("text",{x:pos[i][0].x,y:"27","text-anchor":"middle",fill:"#413655","font-size":"11","font-weight":"700","letter-spacing":"2"});
     text.textContent=label;
     svg.appendChild(text);
   });
@@ -167,9 +167,9 @@ function renderNetwork(data) {
         const line=svgElement("line",{
           x1:pos[layer][i].x+12,y1:pos[layer][i].y,
           x2:pos[layer+1][o].x-12,y2:pos[layer+1][o].y,
-          stroke:w>=0?"#72dfee":"#c59efb",
+          stroke:w>=0?"#4f35dd":"#f45c72",
           "stroke-width":Math.max(0.5,Math.min(2.0,0.65+Math.abs(w)*0.42)),
-          "stroke-opacity":Math.min(.48, .055+.13*strength+.035*Math.min(signal,3)),
+          "stroke-opacity":Math.min(.57, .17+.23*strength+.045*Math.min(signal,3)),
           "stroke-linecap":"round"
         });
         wires.appendChild(line);
@@ -185,12 +185,12 @@ function renderNetwork(data) {
       const radius=layerIndex===1?9:layerIndex===2?11:14;
       const strength=Math.min(1,Math.abs(vals[i])/max);
       if(selected){
-        const glow=svgElement("circle",{cx:pos1.x,cy:pos1.y,r:radius+9,fill:colors[layerIndex],"fill-opacity":"0.13",stroke:"#b5f7ff","stroke-width":"1.5","stroke-opacity":"0.85"});
+        const glow=svgElement("circle",{cx:pos1.x,cy:pos1.y,r:radius+9,fill:colors[layerIndex],"fill-opacity":"0.13",stroke:"#1c1831","stroke-width":"1.5","stroke-opacity":"0.85"});
         svg.appendChild(glow);
       }
       const circle=svgElement("circle",{
         cx:pos1.x,cy:pos1.y,r:radius,fill:colors[layerIndex],
-        "fill-opacity":.30+strength*.65,stroke:selected?"#fff":colors[layerIndex],
+        "fill-opacity":.30+strength*.65,stroke:selected?"#1c1831":colors[layerIndex],
         "stroke-width":selected?2.5:1.2,
         "stroke-opacity":selected?1:.85,
         class:layerIndex===1?"clickable":""
