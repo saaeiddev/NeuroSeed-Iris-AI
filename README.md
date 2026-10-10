@@ -53,7 +53,7 @@ In **Settings → Pages**, choose **Deploy from a branch**, then **main**, then 
 ## Files
 
 - `index.html` — document layout, inputs, outputs, network explorer and math inspector
-- `style.css` — dark responsive glass-panel interface
+- `style.css` — vibrant Pop Science editorial interface with geometric controls, bold neon accents, responsive layouts, and accessible contrast
 - `app.js` — real trained model parameters, forward pass, softmax, SVG network rendering, regression checks
 - `favicon.svg` — project icon
 
