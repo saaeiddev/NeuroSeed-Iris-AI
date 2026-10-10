@@ -66,3 +66,7 @@ In **Settings → Pages**, choose **Deploy from a branch**, then **main**, then 
 - Rendering: HTML + CSS + vanilla JavaScript + inline SVG
 - Designed to work on mobile and desktop, with accessible controls and reduced-motion preferences
 - Source code licensed under **MIT**; see `LICENSE`.
+
+## Deployment troubleshooting
+
+The entry point is `index.html` in the repository root. GitHub Pages must use **Settings → Pages → Build and deployment → Deploy from a branch → main → /(root)**. If a first-time deployment returns 404, wait for the initial Pages build, then check the GitHub Actions tab for any build or deployment failure. A new commit to `main` can retrigger deployment after Pages has been enabled.
