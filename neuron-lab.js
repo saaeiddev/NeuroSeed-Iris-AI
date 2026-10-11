@@ -73,7 +73,7 @@
       const n=event.detail?.neuron;
       if(Number.isInteger(n)&&n>=0&&n<12)loadNeuron(n,false);
     });
-    loadNeuron(0,false);
+    loadNeuron(6,false);
   }
 
   function loadNeuron(n, setInspector) {
