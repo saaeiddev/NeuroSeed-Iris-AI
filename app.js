@@ -149,10 +149,10 @@ function renderNetwork(data) {
   svg.appendChild(title);
   const pos=neuronPositions();
   const activations=[data.standardized,data.hidden1.a,data.hidden2.a,data.probs];
-  const colors=["#ff6549","#6240f6","#a956fa","#20c9ad"];
+  const colors=["#ffab82","#72f8dc","#abafff","#91e9ff"];
   const labels=["INPUTS","HIDDEN 01","HIDDEN 02","OUTPUTS"];
   labels.forEach(function(label,i) {
-    const text=svgElement("text",{x:pos[i][0].x,y:"27","text-anchor":"middle",fill:"#413655","font-size":"11","font-weight":"700","letter-spacing":"2"});
+    const text=svgElement("text",{x:pos[i][0].x,y:"27","text-anchor":"middle",fill:"#bce4e8","font-size":"11","font-weight":"700","letter-spacing":"2"});
     text.textContent=label;
     svg.appendChild(text);
   });
@@ -167,7 +167,7 @@ function renderNetwork(data) {
         const line=svgElement("line",{
           x1:pos[layer][i].x+12,y1:pos[layer][i].y,
           x2:pos[layer+1][o].x-12,y2:pos[layer+1][o].y,
-          stroke:w>=0?"#4f35dd":"#f45c72",
+          stroke:w>=0?"#6ef4da":"#ff8fa0",
           "stroke-width":Math.max(0.5,Math.min(2.0,0.65+Math.abs(w)*0.42)),
           "stroke-opacity":Math.min(.57, .17+.23*strength+.045*Math.min(signal,3)),
           "stroke-linecap":"round"
@@ -199,8 +199,8 @@ function renderNetwork(data) {
         circle.setAttribute("tabindex","0");
         circle.setAttribute("role","button");
         circle.setAttribute("aria-label","Inspect hidden layer 1 neuron "+(i+1));
-        circle.addEventListener("click",function(){selectedNeuron=i;renderInspector(lastForward);renderNetwork(lastForward);});
-        circle.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();selectedNeuron=i;renderInspector(lastForward);renderNetwork(lastForward);}});
+        circle.addEventListener("click",function(){selectedNeuron=i;renderInspector(lastForward);renderNetwork(lastForward);window.dispatchEvent(new CustomEvent("neuroseed:select",{detail:{neuron:i}}));});
+        circle.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();selectedNeuron=i;renderInspector(lastForward);renderNetwork(lastForward);window.dispatchEvent(new CustomEvent("neuroseed:select",{detail:{neuron:i}}));svg.querySelectorAll("circle.clickable")[i]?.focus();}});
       }
       svg.appendChild(circle);
     });
@@ -228,6 +228,11 @@ function setup() {
     const range=$("range-"+i);
     range.addEventListener("input",function(){
       num.value=range.value;
+      document.querySelectorAll("[data-preset]").forEach(function(btn){btn.classList.remove("active");});
+      run();
+    });
+    num.addEventListener("input",function(){
+      if(num.value!=="") range.value=num.value;
       document.querySelectorAll("[data-preset]").forEach(function(btn){btn.classList.remove("active");});
       run();
     });
