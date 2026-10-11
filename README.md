@@ -6,6 +6,26 @@ An interactive, fully browser-based neural network experiment using **the actual
 
 **Created by Amir Saeid Dehghan · 2026**
 
+## Interactive Neuron Signal Studio (October 2026)
+
+The new **Signal Studio** provides a genuinely editable artificial neuron, not an animated placeholder:
+
+- Four live **standardized Iris inputs** feed one selected first-hidden-layer neuron, with straight weight-colored connections and a responsive 3D-style glass core.
+- Change any **weight (w1–w4)** or the **bias (b)**, and observe the weighted sum `z = Σ(x · w) + b` and activation update immediately.
+- Explore **ReLU**, **Sigmoid**, or **Tanh** activations, watch a signal pulse, and **restore the actual learned PyTorch parameters** for any of twelve first-hidden-layer neurons.
+- Select a neuron in the whole-network drawing or in Signal Studio to inspect its **real original learned weights**.
+- **Important:** Editing weights or changing activation in Signal Studio is a separate educational sandbox. It never alters the saved pretrained Iris classification network or misrepresents changed parameters as trained model accuracy.
+
+The visual redesign uses a midnight/teal glass aesthetic, a reflective spherical summation node, crisp linear connections, and angular instrument-style controls.
+
+### Quick Windows 11 smoke test
+
+1. Download ZIP from GitHub, extract the folder, and open `index.html` in Chrome or Edge (no Python or install step).
+2. Under **Experiment**, choose **Virginica** — the predicted species should change to *Iris virginica*.
+3. Under **Signal Studio**, drag a weight slider and verify the **weighted sum (z)** changes.
+4. Set **Bias** to `3.0` and verify the activation changes, then switch from **ReLU** to **Sigmoid**.
+5. Click **Restore trained weights** and confirm the sandbox status becomes **TRAINED WEIGHTS · REAL MODEL**.
+
 ## How it works
 
 The Iris classifier consumes four measurements in centimeters:
@@ -56,6 +76,8 @@ In **Settings → Pages**, choose **Deploy from a branch**, then **main**, then 
 - `style.css` — vibrant Pop Science editorial interface with geometric controls, bold neon accents, responsive layouts, and accessible contrast
 - `app.js` — real trained model parameters, forward pass, softmax, SVG network rendering, regression checks
 - `favicon.svg` — project icon
+- `neuron-lab.js` — interactive neuron math, weights, bias, activation, pulsing SVG connections
+- `neuron-lab.css` — midnight glass aesthetic and responsive neuron simulator
 
 ## Technical notes
 
