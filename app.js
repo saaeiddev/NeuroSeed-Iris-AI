@@ -16,7 +16,7 @@ const PRESETS = [
   [6.0, 2.7, 4.5, 1.5],
   [6.7, 3.0, 5.2, 2.3]
 ];
-let selectedNeuron = 0;
+let selectedNeuron = 6;
 let lastForward = null;
 
 function decodeWeights() {
