@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#f7f5ed">
+  <meta name="theme-color" content="#080e1d">
   <meta name="description" content="NeuroSeed AI: interact with a genuine PyTorch neural network trained on the Iris dataset. Adjust its four inputs, trace the weighted sums, and explore all 27 neurons.">
   <title>NeuroSeed AI — Neural Network Laboratory</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./style.css?v=pop-science-20261010">
   <script src="./app.js?v=pop-science-20261010" defer></script>
+  <link rel="stylesheet" href="./neuron-lab.css?v=20261011c">
+  <script src="./neuron-lab.js?v=20261011c" defer></script>
 </head>
 <body>
   <div class="ambient ambient-a" aria-hidden="true"></div>
@@ -18,7 +20,7 @@
       <a href="#top" class="brand" aria-label="NeuroSeed home"><span class="brand-icon">✳</span><span>Neuro<span class="brand-accent">Seed</span><small>AI LAB</small></span></a>
       <nav aria-label="Main navigation">
         <a href="#experiment">Experiment</a>
-        <a href="#network">Explore network</a>
+        <a href="#neuron-lab">Signal Studio</a>
         <a href="#explain">Under the hood</a>
       </nav>
       <a class="top-github" href="https://github.com/saaeiddev/NeuroSeed-Iris-AI" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
@@ -60,8 +62,52 @@
           </article>
         </div>
       </section>
+      
+      <section id="neuron-lab" class="lab-section">
+        <div class="section-heading">
+          <div><span class="overline">02 / SIGNAL STUDIO</span><h2>One neuron. Every calculation. Your control.</h2></div>
+          <p>Move a weight, change the bias, or try a different activation. The signal, mathematics, and output all update live.</p>
+        </div>
+        <div class="lab-shell">
+          <div class="lab-header"><div class="lab-header-title">NEURON ENGINE / LIVE SANDBOX</div><span id="lab-state" class="lab-state">TRAINED WEIGHTS · REAL MODEL</span></div>
+          <div class="lab-layout">
+            <div class="lab-visual">
+              <svg id="lab-svg" viewBox="0 0 900 440" role="img" aria-label="Interactive single artificial neuron with four straight weighted input connections, a summation sphere, activation and output. Numerical values update as you edit weights."><title>Interactive neuron — inputs, weights, bias, activation, output</title></svg>
+              <div id="lab-visual-status" class="lab-visual-status" aria-live="polite">Four weighted signals / real neural-network parameters</div>
+            </div>
+            <div class="lab-controls">
+              <div class="lab-control-heading">
+                <div><h3>Engineer the signal</h3><small>Edit the neuron, not just a decorative diagram.</small></div>
+                <select id="lab-neuron" aria-label="Choose a trained first-hidden-layer neuron"></select>
+              </div>
+              <div class="lab-fields">
+                <div class="lab-field"><label for="lab-activation">ACTIVATION FUNCTION</label>
+                  <select id="lab-activation"><option value="relu">ReLU · trained</option><option value="sigmoid">Sigmoid · explore</option><option value="tanh">Tanh · explore</option></select>
+                </div>
+                <div class="lab-field"><label>INPUT SOURCE</label><div style="font-size:12px;color:#d5f9e9;padding-top:9px">Live Iris measurements ↑</div></div>
+              </div>
+              <div class="lab-weights-title"><span>LEARNED WEIGHTS / w₁—w₄</span><small>drag to edit</small></div>
+              <div id="lab-weights" aria-label="Four editable neuron weights"></div>
+              <div class="lab-bias-row"><div class="lab-weight-head"><label for="lab-bias">BIAS / b</label><output id="lab-bias-value">—</output></div>
+                <input type="range" id="lab-bias" min="-4" max="4" step="0.01" aria-label="Bias value">
+              </div>
+              <div class="lab-actions"><button type="button" id="lab-pulse">▶ Transmit signal</button><button type="button" id="lab-reset">↺ Restore trained weights</button></div>
+              <div class="lab-readout" aria-live="polite">
+                <div><span>WEIGHTED SUM / z</span><strong id="lab-z">—</strong></div>
+                <div><span>ACTIVATION / a</span><strong id="lab-a">—</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="lab-math">
+            <h3>UNDER THE GLASS / ACTUAL FORWARD-PASS MATH</h3>
+            <p>z = Σ(xᵢ × wᵢ) + b = <span id="lab-terms">Calculating…</span></p>
+            <p id="lab-mode-caption">ReLU(z) = max(0, z)</p>
+            <p class="lab-caveat"><strong>Important:</strong> Changing weights or activation here is an educational sandbox. It does not secretly rewrite the trained Iris classifier above. Restore weights to see the real first-layer neuron again.</p>
+          </div>
+        </div>
+      </section>
       <section id="network" class="network-section">
-        <div class="section-heading"><div><span class="overline">02 / NETWORK VISUALIZATION</span><h2>Every connection has a weight.</h2></div><p>27 neurons arranged in four layers. Select any neuron in the first hidden layer to inspect its calculation.</p></div>
+        <div class="section-heading"><div><span class="overline">03 / NETWORK VISUALIZATION</span><h2>Every connection has a weight.</h2></div><p>27 neurons arranged in four layers. Select a neuron in the first hidden layer to inspect its trained calculation, or experiment with its weights in Signal Studio.</p></div>
         <div class="panel network-panel">
           <div class="network-toolbar"><div class="diagram-legend"><span><i class="legend-input"></i> Input</span><span><i class="legend-hidden"></i> Hidden</span><span><i class="legend-output"></i> Output</span></div><div class="network-annotation">Lines = weighted connections <span aria-hidden="true">↗</span></div></div>
           <div class="network-scroller"><svg id="network-svg" viewBox="0 0 920 500" role="img" aria-label="Neural network architecture with four inputs, hidden layers of twelve and eight neurons, and three outputs. Click a first-layer neuron to inspect its computation."><title>Interactive neural network — 4 → 12 → 8 → 3</title></svg></div>
@@ -69,7 +115,7 @@
         </div>
       </section>
       <section id="explain" class="explain-section">
-        <div class="section-heading"><div><span class="overline">03 / UNDER THE HOOD</span><h2>Not magic. Actual mathematics.</h2></div><p>Here is how the selected artificial neuron transforms four normalized inputs into an activation.</p></div>
+        <div class="section-heading"><div><span class="overline">04 / UNDER THE HOOD</span><h2>Not magic. Actual mathematics.</h2></div><p>Here is how the selected artificial neuron transforms four normalized inputs into an activation.</p></div>
         <div class="explain-grid">
           <article class="panel math-panel">
             <div class="panel-title"><span class="panel-icon">∑</span><div><h3>Neuron inspector</h3><p>Click a first-layer neuron above to change this.</p></div><span class="panel-meta" id="selected-neuron">H1 · 01</span></div>
