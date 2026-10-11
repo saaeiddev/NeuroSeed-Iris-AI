@@ -1,0 +1,215 @@
+/* NeuroSeed / Signal Studio — precision glass, angular controls, midnight palette.
+   Preserves responsive geometry of the original site and replaces playful art. */
+:root {
+  color-scheme:dark;
+  --bg:#080e1d;--surface:#101b2c;--ink:#edfaff;--ink-soft:#a4b7cc;
+  --border:#37516a;--violet:#70eddd;--ultraviolet:#8ba1ff;
+  --coral:#ff9975;--lime:#e5fd99;--pink:#ff899d;--aqua:#7cdbfa;
+  --yellow:#f7c77c;--wash:#13253a;--text:var(--ink);--muted:var(--ink-soft);
+  --line:#38546a88;--cyan:#70eddd;--purple:#a1a3ff;--mint:#70eddd;--orange:#ff9975;
+}
+body {
+  background:#080e1d;
+  background-image:radial-gradient(ellipse at 78% -10%,#274c6388,transparent 39%),
+    radial-gradient(ellipse at 4% 48%,#29294c70,transparent 47%),
+    linear-gradient(#a6deef08 1px,transparent 1px),
+    linear-gradient(90deg,#a6deef08 1px,transparent 1px);
+  background-size:auto,auto,42px 42px,42px 42px;
+}
+::selection{background:#70eddd;color:#071426}
+.topbar{border-bottom:1px solid #42647b77}
+.brand{letter-spacing:-.7px}
+.brand-icon{clip-path:polygon(12% 0,88% 0,100% 25%,100% 85%,85% 100%,12% 100%,0 80%,0 15%);
+  border-color:#6fe9e1;background:#0f293e;color:#8af7de}
+.brand-accent{color:#74ecdf}.brand small{color:#9cb9c9}
+.topbar nav{border:1px solid #395f71;background:#142333;border-radius:2px;transform:none}
+.topbar nav a:hover{background:#254b55}
+.top-github{color:#06222c;background:#a2f7e1;border-color:#9ffbe7;box-shadow:none}
+.hero{min-height:540px}
+.eyebrow{background:#17343f;border:1px solid #4e908f;box-shadow:none;transform:none;color:#a0ffe5;clip-path:polygon(0 0,98% 0,100% 25%,100% 100%,0 100%)}
+.dash{color:#70a69d}
+.hero h1{font-family:"Segoe UI",Inter,sans-serif;letter-spacing:-3px;font-weight:850}
+.gradient-text{background:linear-gradient(110deg,#91ffdf,#b1c9ff 45%,#ffac85);background-clip:text;-webkit-background-clip:text}
+.hero-copy>p{color:#b4cbd7}
+.button{border:1px solid #7caaab;clip-path:polygon(0 0,95% 0,100% 22%,100% 100%,0 100%);
+  background:#102839;color:#d5fff1}
+.button-primary{background:#78ecdb;color:#06262c;border-color:#b5ffed;box-shadow:none}
+.button-primary:hover{box-shadow:0 6px 24px #67f1da45}
+.quiet-link{border-bottom-color:#63cfc8}
+.quiet-link span,.quiet-link:hover{color:#9df5e6}
+.hero-art {
+  border:1px solid #48647b;background:radial-gradient(circle at 55% 36%,#4abec74a,transparent 37%),
+  radial-gradient(circle at 43% 65%,#5b57be55,transparent 50%),#0b1d32;
+  border-radius:24px;box-shadow:0 22px 100px #51e8e71b, inset 0 0 46px #87ddf010;
+  transform:none;overflow:hidden;
+}
+.hero-art:before{inset:22px;border-radius:15px;border:1px solid #719aab55}
+.hero-art:after{content:"";width:115px;height:115px;right:-53px;top:-55px;border:1px solid #77fadb66;
+  border-radius:50%;transform:none}
+.orbit{border-color:#72ebdf5e}
+.orbit-two{border-color:#8d9af27c}
+.orbit-three{border-color:#e9a07e75}
+.neuron-center {
+  width:203px;height:203px;border:1px solid #a8fff3;
+  border-radius:50%;background:radial-gradient(circle at 35% 25%,#d9fff0,#43a5b3 26%,#173b5a 58%,#071a35 84%);
+  box-shadow:inset -20px -22px 33px #050d22, inset 13px 12px 22px #e1ffe799,0 0 0 14px #8fffe413,0 0 75px #76ffdd85;
+  transform:none;animation:none;
+}
+.neuron-center:before{inset:16px;border:1px solid #d3ffff60;border-radius:50%}
+.neuron-core{width:107px;height:107px;border:1px solid #d4fff0;border-radius:50%;
+  background:radial-gradient(circle at 36% 30%,#e0ffff,#589eb4 36%,#0d2a48 75%);
+  box-shadow:0 0 38px #62fdd675;transform:none}
+.neuron-core:after{content:"Σ";color:#f3fff9;font:700 63px "Segoe UI",sans-serif;
+  text-shadow:0 0 17px #b8ffe0}
+.spark{width:6px;height:6px;border:0;border-radius:50%;box-shadow:0 0 15px #93ffe5}
+.orbit-label{color:#bdfbea;background:#122b43;border:1px solid #6acbca;
+  border-radius:3px;box-shadow:0 8px 16px #03091688;transform:none}
+.label-a{background:#142e37}.label-b{background:#262d47;transform:none}.label-c{background:#142f3b}
+.stats>div{background:#102136!important;color:#e5f8ff;border:1px solid #36546b;
+  box-shadow:none;clip-path:polygon(0 0,96% 0,100% 17%,100% 100%,0 100%)}
+.stat-value{color:#a8ffe9}.stat-label{color:#a5bfcd}
+.experiment-section,.network-section,.explain-section,.lab-section{scroll-margin-top:35px;margin-top:105px}
+.overline{background:#1f414b;color:#a7ffef;transform:none;border-left:3px solid #71efd8}
+.section-heading h2{font-family:"Segoe UI",Inter,sans-serif;letter-spacing:-1.9px;font-weight:790}
+.panel{background:#111d30;border:1px solid #37566b;border-radius:13px;
+  box-shadow:0 22px 55px #01061348,inset 0 1px #d0ffff0e}
+.inputs-panel,.prediction-panel,.math-panel,.learn-panel{background:#111d30}
+.inputs-panel:before,.prediction-panel:before,.math-panel:before,.learn-panel:before{background:#70eddd3d}
+.panel-title h3{color:#eaf9fc}.panel-title p{color:#a9bdce}
+.panel-icon{background:#1d3b4c;border:1px solid #568e94;color:#a9ffeb;transform:none;border-radius:6px}
+.panel-icon.accent{background:#3b3445;border-color:#a07d87;color:#ffc3ac;transform:none}
+.panel-meta{background:#1a3144;border:1px solid #5c9a9d;color:#a3ffeb}
+.input-label>div{background:#0a182a;border:1px solid #385970;box-shadow:none;border-radius:4px}
+.input-label input[type=number]{color:#f1fffa}
+.input-group input[type=range]{background:linear-gradient(90deg,#6ceddb,#91a4ff);border:0;border-radius:20px}
+.input-group input[type=range]::-webkit-slider-thumb{background:#ecffda;transform:none;border:2px solid #184456;border-radius:50%;box-shadow:0 0 0 4px #78eeef21}
+.input-group input[type=range]::-moz-range-thumb{background:#ecffda;transform:none;border:2px solid #184456;border-radius:50%}
+.limits{color:#94acbd}
+.presets{border-top-color:#536a7d}
+.preset{border:1px solid #466479;border-radius:4px;background:#16283e;
+  color:#c3d9e6;box-shadow:none;transform:none}
+.preset.active{background:#98f5dc;color:#0d2b38}
+.preset:hover{background:#33566b;transform:translateY(-2px)}
+.run-button{background:#8dfee0;color:#09292f;border-color:#8dfee0}
+.run-button:hover{background:#c0ffe9}
+.live-pill{background:#1a413d;color:#acffe5;border:1px solid #60bfac;transform:none}
+.prediction-spotlight{border:1px solid #43708b;background:linear-gradient(135deg,#233e5a,#182847);
+  clip-path:polygon(0 0,96% 0,100% 13%,100% 100%,0 100%)}
+.spotlight-copy .micro-label,.spotlight-copy p{color:#c5e7ef}
+.confidence-ring>div{background:#1a2a41}
+.prob-heading{color:#dcebf3}.track{border:0;background:#283950;border-radius:20px}
+.inference-strip{border:1px solid #426077;background:#0b1b2f}
+.inference-strip>span:last-child{color:#a3ffe8}
+.network-panel{background:#0d182a}
+.network-toolbar{background:#1b3648;border-bottom:1px solid #3b6875;color:#c4f9ee}
+.network-scroller{background-image:radial-gradient(#83d9e21a 1px,transparent 1.3px)}
+.network-scroller circle.clickable:hover{stroke:#bafce8;filter:drop-shadow(0 0 9px #70eddd)}
+.layer-foot{background:#13293a;border-top:1px solid #3b6176}
+.layer-foot b{color:#8df8e1}
+.formula{color:#b2ffe5;background:#0b1930;border-color:#3e7380;box-shadow:none}
+.math-term{border-bottom-color:#456071;color:#9bb2c5}.math-term strong{color:#e1f9f5}
+.math-result>div,.learn-note{background:#152b3e;border:1px solid #4a6b7b;box-shadow:none}
+.math-result strong,.learn-note strong{color:#9dffe8}
+.steps>div>span{background:#193f47;border:1px solid #44887e;color:#a8ffea;transform:none}
+.steps>div:nth-child(2)>span{background:#3a3453}
+.steps>div:nth-child(3)>span{background:#303a58}
+.steps>div:nth-child(4)>span{background:#3b3447}
+.steps p,.learn-note span{color:#a9bfca}
+footer{border-top:1px solid #3b5366}
+footer a:hover{color:#a6ffe7}
+
+/* New standalone neuron simulator */
+.lab-section{margin-top:105px}
+.lab-shell{position:relative;overflow:hidden;border:1px solid #3d657b;border-radius:17px;
+  background:linear-gradient(135deg,#142238,#0c192c 53%,#102d3a);
+  box-shadow:0 26px 75px #0007}
+.lab-shell:after{content:"";position:absolute;right:-110px;top:-150px;width:380px;height:380px;
+  pointer-events:none;background:radial-gradient(circle,#6deddb15,transparent 70%)}
+.lab-header{display:flex;justify-content:space-between;align-items:center;gap:15px;
+  padding:18px 25px;border-bottom:1px solid #49677c77;background:#14263b}
+.lab-header-title{display:flex;gap:10px;align-items:center;font-size:12px;font-weight:850;letter-spacing:1.6px}
+.lab-header-title:before{content:"";width:11px;height:11px;background:#82ffde;box-shadow:0 0 20px #82ffde;border-radius:50%}
+.lab-state{font-size:10px;color:#adffde;border:1px solid #5d9f94;background:#1d393b;padding:7px 12px;
+  letter-spacing:1px;font-weight:800}
+.lab-state.edited{color:#ffd6a4;background:#43382f;border-color:#a18a69}
+.lab-layout{display:grid;grid-template-columns:minmax(0,1.48fr) minmax(315px,.92fr);align-items:stretch}
+.lab-visual{display:flex;flex-direction:column;min-width:0;padding:24px 20px 16px;
+  background:radial-gradient(circle at 51% 53%,#1c5d6845,transparent 56%),#091829}
+.lab-visual svg{width:100%;height:auto;min-height:330px;max-height:540px}
+.lab-visual-status{border-top:1px solid #42627766;padding:18px 12px 4px;text-align:center;
+  color:#92b3c8;font-size:10px;text-transform:uppercase;letter-spacing:2px}
+.lab-svg-caption{fill:#81b3c2;font:700 12px "Segoe UI",sans-serif;letter-spacing:1.8px}
+.lab-svg-label{fill:#80ebd4;font:700 11px "Segoe UI",sans-serif;letter-spacing:1px}
+.lab-svg-input{fill:#eefeff;font:800 16px "Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+.lab-svg-weight{fill:#9eb6cc;font:700 12px "Segoe UI",sans-serif}
+.lab-svg-sigma{fill:#e3fff9;font:700 79px "Segoe UI",sans-serif;filter:drop-shadow(0 0 10px #b1ffe6)}
+.lab-svg-z{fill:#e4fffa;font:700 19px "Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+.lab-svg-out{fill:#f7fff9;font:850 19px "Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+.lab-orbit{transform-origin:487px 220px;animation:lab-orbit 36s linear infinite}
+@keyframes lab-orbit{to{transform:rotate(360deg)}}
+.lab-signal-path{stroke-opacity:.35;stroke-dashoffset:0}
+.lab-firing .lab-signal-path{stroke-opacity:1;animation:lab-pulse 1.15s linear 1}
+@keyframes lab-pulse{from{stroke-dashoffset:250}to{stroke-dashoffset:0}}
+.lab-controls{position:relative;padding:26px 25px 24px;border-left:1px solid #426377;
+  background:linear-gradient(158deg,#15273c,#111e31)}
+.lab-control-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+.lab-control-heading h3{font-size:19px;line-height:1.2;letter-spacing:-.5px}
+.lab-control-heading small{display:block;color:#a5bdc9;margin-top:5px;font-size:11px}
+.lab-control-heading select,.lab-controls select{background:#0c1c2d;border:1px solid #4f7983;
+  color:#e6fff8;border-radius:4px;padding:9px 10px;max-width:185px;font-size:12px}
+.lab-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:21px}
+.lab-field label{display:block;color:#a4bbca;font-size:10px;font-weight:800;letter-spacing:.8px;margin-bottom:7px}
+.lab-field select{width:100%;max-width:none}
+.lab-weights-title{display:flex;align-items:center;justify-content:space-between;gap:5px;
+  padding-top:15px;border-top:1px solid #435c71;margin-bottom:14px}
+.lab-weights-title span{font-size:12px;font-weight:900;letter-spacing:.8px}
+.lab-weights-title small{font-size:10px;color:#93adbb}
+.lab-weight-row{margin:0 0 15px}
+.lab-weight-head{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:7px;
+  color:#afc7d4;font-size:10px;letter-spacing:.25px;font-weight:750}
+.lab-weight-head output{font-size:12px;color:#fff;font-weight:900;font-variant-numeric:tabular-nums}
+.lab-weight-row input[type=range],.lab-bias-row input[type=range]{width:100%;height:5px;cursor:pointer;
+  background:#426071;border-radius:20px;accent-color:var(--slider-color,#7af6da)}
+.lab-bias-row{padding-top:12px;margin-top:5px;border-top:1px solid #435c71}
+.lab-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.lab-actions button{padding:12px 13px;font-size:11px;font-weight:850;border-radius:3px;
+  border:1px solid #66b6aa;background:#1a4d53;color:#dbfff4;
+  clip-path:polygon(0 0,94% 0,100% 27%,100% 100%,0 100%)}
+.lab-actions button:first-child{background:#96ffe1;color:#07303b;border-color:#96ffe1}
+.lab-actions button:hover{filter:brightness(1.17)}
+.lab-readout{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:19px}
+.lab-readout>div{border:1px solid #4d687b;background:#0b1d31;padding:14px}
+.lab-readout span{font-size:10px;letter-spacing:1.2px;color:#94b2c3;font-weight:850}
+.lab-readout strong{display:block;font-size:25px;color:#a5ffe5;margin-top:4px;font-variant-numeric:tabular-nums}
+.lab-math{padding:19px 24px 23px;border-top:1px solid #426377;background:#0b1c2f}
+.lab-math h3{font-size:11px;letter-spacing:1.4px;color:#b0f6e3}
+.lab-math p{font-size:12px;color:#b4ccda;margin-top:9px;overflow-wrap:anywhere}
+.lab-math .lab-caveat{color:#85a6b9;margin-top:14px;font-size:11px}
+.lab-math .lab-caveat strong{color:#a7fce8}
+@media(max-width:1050px){
+ .lab-layout{grid-template-columns:1fr}
+ .lab-controls{border-left:0;border-top:1px solid #426377}
+ .lab-visual svg{max-height:440px;min-height:260px}
+}
+@media(max-width:700px){
+ .hero h1{letter-spacing:-1.7px}
+ .hero-art{margin:0 6px;height:320px}
+ .hero-art:before{inset:12px}
+ .neuron-center{width:155px;height:155px}
+ .neuron-core{width:79px;height:79px}
+ .neuron-core:after{font-size:48px}
+ .lab-section{margin-top:80px}
+ .lab-header{padding:14px 15px;flex-wrap:wrap}
+ .lab-visual{padding:15px 6px}
+ .lab-visual svg{min-height:200px}
+ .lab-visual-status{letter-spacing:1px;padding:12px 5px 0;font-size:9px}
+ .lab-controls{padding:23px 17px}
+ .lab-control-heading{flex-wrap:wrap}
+ .lab-control-heading select{max-width:100%}
+ .lab-math{padding:19px 16px}
+ .lab-readout strong{font-size:21px}
+ .stats>div{clip-path:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .lab-orbit,.lab-firing .lab-signal-path{animation:none}
+}
